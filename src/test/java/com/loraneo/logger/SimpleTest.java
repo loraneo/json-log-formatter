@@ -88,7 +88,6 @@ public class SimpleTest {
         streamHandler.flush();
         loggerContent.flush();
 
-        loggerContent.writeTo(System.out);
         Assert.assertEquals(neutralize(readTestData()),
                 neutralize(loggerContent.toString()));
 
