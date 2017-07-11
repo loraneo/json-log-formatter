@@ -45,18 +45,19 @@ public class JSONLogFormatter extends Formatter {
                     .add("_LevelValue",
                             String.valueOf(record.getLevel()
                                     .intValue()))
-                    .add("ClassName",
+                    .add("_ClassName",
                             getLogClassName(record))
-                    .add("MethodName",
+                    .add("_MethodName",
                             getLogMethodName(record))
-                    .add("RecordNumber",
+                    .add("_RecordNumber",
                             getRecordNumber(record))
                     .add("_LogMessage",
                             readMessage(record))
-                    .add("_LogException",
-                            getException(record))
+                    .add("_Exception",
+                            getExceptionMessage(record))
+                    .add("_StackTrace",
+                            getStackTrace(record.getThrown()))
                     .build()
-
                     .toString()).append(LINE_SEPARATOR)
                             .toString();
 
@@ -74,20 +75,6 @@ public class JSONLogFormatter extends Formatter {
             return "";
         }
         return message;
-    }
-
-    private String getException(final LogRecord record) {
-        if (record.getThrown() != null) {
-            return Json.createObjectBuilder()
-                    .add("_Exception",
-                            getExceptionMessage(record))
-                    .add("_StackTrace",
-                            getStackTrace(record.getThrown()))
-                    .build()
-                    .toString();
-
-        }
-        return "";
     }
 
     private String getExceptionMessage(final LogRecord record) {
