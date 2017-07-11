@@ -1,1 +1,2 @@
-# json-log-formatter
+# json-log-formater
+Simple json log formater
