@@ -78,6 +78,9 @@ public class JSONLogFormatter extends Formatter {
     }
 
     private String getExceptionMessage(final LogRecord record) {
+        if (record.getThrown() == null) {
+            return "";
+        }
         if (record.getThrown()
                 .getMessage() == null) {
             return "";
@@ -87,6 +90,9 @@ public class JSONLogFormatter extends Formatter {
     }
 
     private String getStackTrace(final Throwable thrown) {
+        if (thrown == null) {
+            return "";
+        }
         try (StringWriter stringWriter = new StringWriter(); PrintWriter printWriter = new PrintWriter(stringWriter)) {
             thrown.printStackTrace(printWriter);
             return stringWriter.toString();
