@@ -2,7 +2,9 @@
 Simple json log formater
 
 # Payara micro and docker usage
-''' mvn clean package '''
+` 
+mvn clean package 
+`
 
 Dockerfile:
 
