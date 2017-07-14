@@ -10,12 +10,12 @@ Dockerfile:
 
 ```
 
-COPY lib/json-log-formater.jar  $PAYARA_PATH/json-logging.jar
+COPY lib/json-log-formater.jar  $PAYARA_PATH/json-log-formater.jar
 
 CMD java $JAVA_OPTS \
 	 	-Djava.util.logging.config.file=/opt/payara/logging.properties \
 	 	-Dcontainer.hostname=$HOSTNAME \
-	 	-cp "$PAYARA_PATH/payara-micro.jar:$PAYARA_PATH/json-log-formater.jar" \
+	 	-cp "$PAYARA_PATH/payara-micro.jar:$PAYARA_PATH/json-log-formater.jar" json-logging\
 	 	fish.payara.micro.PayaraMicro \
 		--deploy /opt/payara/deployments/<some-war> \
 		--logproperties /opt/payara/logging.properties
